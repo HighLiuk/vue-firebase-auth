@@ -1,19 +1,5 @@
-# vue-firebase-auth
+# Vue Firebase Auth
 
-## Project setup
-```
-npm install
-```
+Based on https://github.com/iamshaunjp/firebase-auth and the playlist https://www.youtube.com/playlist?list=PL4cUxeGkcC9jUPIes_B8vRjn1_GaplOPQ by [The Net Ninja](https://www.youtube.com/c/TheNetNinja)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+but with Vue

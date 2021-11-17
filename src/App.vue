@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Navbar />
+  <SignupModal />
+  <LoginModal />
+  <AccountModal />
+  <CreateGuideModal />
+  <Guides />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SignupModal from "./components/Modal/SignupModal"
+import LoginModal from "./components/Modal/LoginModal"
+import AccountModal from "./components/Modal/AccountModal"
+import CreateGuideModal from "./components/Modal/CreateGuideModal"
+import Navbar from "./components/Navbar"
+import Guides from "./components/Guides"
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
+    SignupModal,
+    LoginModal,
+    AccountModal,
+    CreateGuideModal,
+    Navbar,
+    Guides,
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
