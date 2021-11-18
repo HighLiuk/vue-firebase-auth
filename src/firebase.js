@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import { getFirestore } from "firebase/firestore/lite"
 
 const config = {
@@ -12,3 +12,9 @@ const config = {
 const app = initializeApp(config)
 const auth = getAuth(app)
 const db = getFirestore(app)
+
+async function createUser(email, password) {
+  return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+export { createUser }
