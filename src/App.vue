@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import M from "materialize-css"
 import SignupModal from "./components/Modal/SignupModal"
 import LoginModal from "./components/Modal/LoginModal"
 import AccountModal from "./components/Modal/AccountModal"
@@ -24,6 +25,9 @@ export default {
     CreateGuideModal,
     Navbar,
     Guides,
+  },
+  mounted() {
+    M.AutoInit()
   },
 }
 </script>
