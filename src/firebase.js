@@ -61,4 +61,17 @@ async function createGuide(title, content) {
   await addDoc(guides, { title, content })
 }
 
-export { signup, login, logout, getCurrentUser, getGuides, createGuide }
+async function getUser(id) {
+  const user = await getDoc(doc(db, "users", id))
+  return user.data()
+}
+
+export {
+  signup,
+  login,
+  logout,
+  getCurrentUser,
+  getGuides,
+  getUser,
+  createGuide,
+}

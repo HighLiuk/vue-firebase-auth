@@ -44,7 +44,7 @@
 
   <SignupModal />
   <LoginModal />
-  <AccountModal :user="user" />
+  <AccountModal v-if="user" :user="user" />
   <CreateGuideModal />
 </template>
 
