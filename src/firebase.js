@@ -31,8 +31,8 @@ const users = collection(db, "users")
 const guides = collection(db, "guides")
 
 async function signup(email, password, bio) {
-  const cred = await createUserWithEmailAndPassword(auth, email, password)
-  await setDoc(doc(users), { id: cred.user.uid, bio })
+  const { user } = await createUserWithEmailAndPassword(auth, email, password)
+  await setDoc(doc(db, "users", user.uid), { bio })
 }
 
 async function login(email, password) {
