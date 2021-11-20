@@ -4,7 +4,9 @@
       <h4>Account details</h4>
       <br />
 
-      <div class="account-details"></div>
+      <div v-if="user" class="account-details">
+        Logged in as {{ user.email }}
+      </div>
     </div>
   </div>
 </template>
@@ -12,5 +14,6 @@
 <script>
 export default {
   name: "AccountModal",
+  props: ["user"],
 }
 </script>
