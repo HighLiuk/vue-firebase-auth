@@ -41,13 +41,28 @@
       </ul>
     </div>
   </nav>
+
+  <SignupModal />
+  <LoginModal />
+  <AccountModal />
+  <CreateGuideModal />
 </template>
 
 <script>
 import { logout } from "@/firebase"
+import SignupModal from "./Modal/SignupModal"
+import LoginModal from "./Modal/LoginModal"
+import AccountModal from "./Modal/AccountModal"
+import CreateGuideModal from "./Modal/CreateGuideModal"
 
 export default {
   name: "Navbar",
+  components: {
+    SignupModal,
+    LoginModal,
+    AccountModal,
+    CreateGuideModal,
+  },
   methods: {
     logout,
   },
