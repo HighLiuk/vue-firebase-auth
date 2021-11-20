@@ -28,7 +28,6 @@ async function login(email, password) {
 
 async function logout() {
   await signOut(auth)
-  console.log("User signed out")
 }
 
 export { signup, login, logout }

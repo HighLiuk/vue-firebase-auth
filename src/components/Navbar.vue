@@ -16,7 +16,11 @@
         </li>
 
         <li class="logged-in">
-          <a href="#" class="grey-text" id="logout" @click.prevent="logout"
+          <a
+            href="#"
+            class="grey-text"
+            id="logout"
+            @click.prevent="onLogoutClick"
             >Logout</a
           >
         </li>
@@ -49,7 +53,10 @@ import { logout } from "@/firebase"
 export default {
   name: "Navbar",
   methods: {
-    logout,
+    async onLogoutClick() {
+      await logout()
+      console.log("User signed out")
+    },
   },
 }
 </script>
