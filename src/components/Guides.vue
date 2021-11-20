@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { getGuides } from "@/firebase"
 import Guide from "./Guide"
 
 export default {
@@ -18,25 +19,11 @@ export default {
   },
   data() {
     return {
-      guides: [
-        {
-          title: "Guide title",
-          content: "Lorem ipsum dolor sit amet.",
-        },
-        {
-          title: "Guide title",
-          content: "Lorem ipsum dolor sit amet.",
-        },
-        {
-          title: "Guide title",
-          content: "Lorem ipsum dolor sit amet.",
-        },
-        {
-          title: "Guide title",
-          content: "Lorem ipsum dolor sit amet.",
-        },
-      ],
+      guides: [],
     }
+  },
+  async mounted() {
+    this.guides = await getGuides()
   },
 }
 </script>
