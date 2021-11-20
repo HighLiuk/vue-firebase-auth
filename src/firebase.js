@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth"
 import { getFirestore } from "firebase/firestore/lite"
 
@@ -30,4 +31,8 @@ async function logout() {
   await signOut(auth)
 }
 
-export { signup, login, logout }
+function getUser(cb) {
+  onAuthStateChanged(auth, cb)
+}
+
+export { signup, login, logout, getUser }

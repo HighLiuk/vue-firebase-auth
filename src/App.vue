@@ -15,6 +15,7 @@ import AccountModal from "./components/Modal/AccountModal"
 import CreateGuideModal from "./components/Modal/CreateGuideModal"
 import Navbar from "./components/Navbar"
 import Guides from "./components/Guides"
+import { getUser } from "@/firebase"
 
 export default {
   name: "App",
@@ -28,6 +29,14 @@ export default {
   },
   mounted() {
     M.AutoInit()
+
+    getUser((user) => {
+      if (user) {
+        console.log("User logged in", user)
+      } else {
+        console.log("User logged out")
+      }
+    })
   },
 }
 </script>
