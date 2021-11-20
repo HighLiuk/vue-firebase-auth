@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <ul class="collapsible z-depth-0 guides">
+    <ul v-show="guides.length" class="collapsible z-depth-0 guides">
       <li v-for="guide in guides">
         <Guide :title="guide.title" :content="guide.content" />
       </li>
     </ul>
+
+    <h5 v-show="!guides.length" class="center-align">Login to view guides</h5>
   </div>
 </template>
 
