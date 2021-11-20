@@ -11,6 +11,8 @@ import {
   collection,
   onSnapshot,
   addDoc,
+  setDoc,
+  doc,
 } from "firebase/firestore"
 
 const config = {
@@ -24,10 +26,12 @@ const app = initializeApp(config)
 const auth = getAuth(app)
 const db = getFirestore(app)
 
+const users = collection(db, "users")
 const guides = collection(db, "guides")
 
-async function signup(email, password) {
-  return await createUserWithEmailAndPassword(auth, email, password)
+async function signup(email, password, bio) {
+  const cred = await createUserWithEmailAndPassword(auth, email, password)
+  await setDoc(doc(users), { id: cred.user.uid, bio })
 }
 
 async function login(email, password) {

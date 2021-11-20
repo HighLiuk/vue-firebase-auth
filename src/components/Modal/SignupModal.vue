@@ -20,6 +20,11 @@
           <label for="signup-password">Choose password</label>
         </div>
 
+        <div class="input-field">
+          <input type="text" id="signup-bio" required v-model="bio" />
+          <label for="signup-bio">One Line Bio</label>
+        </div>
+
         <button class="btn yellow darken-2 z-depth-0">Sign up</button>
       </form>
     </div>
@@ -36,14 +41,16 @@ export default {
     return {
       email: "",
       password: "",
+      bio: "",
     }
   },
   methods: {
     async onSubmit() {
-      await signup(this.email, this.password)
+      await signup(this.email, this.password, this.bio)
       Modal.getInstance(this.$refs.modal).close()
       this.email = ""
       this.password = ""
+      this.bio = ""
     },
   },
 }
