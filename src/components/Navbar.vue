@@ -6,7 +6,7 @@
       </a>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="logged-in">
+        <li v-if="user">
           <a
             href="#"
             class="grey-text modal-trigger"
@@ -15,25 +15,25 @@
           >
         </li>
 
-        <li class="logged-in">
+        <li v-if="user">
           <a href="#" class="grey-text" id="logout" @click.prevent="logout"
             >Logout</a
           >
         </li>
 
-        <li class="logged-in">
+        <li v-if="user">
           <a href="#" class="grey-text modal-trigger" data-target="modal-create"
             >Create Guide</a
           >
         </li>
 
-        <li class="logged-out">
+        <li v-if="!user">
           <a href="#" class="grey-text modal-trigger" data-target="modal-login"
             >Login</a
           >
         </li>
 
-        <li class="logged-out">
+        <li v-if="!user">
           <a href="#" class="grey-text modal-trigger" data-target="modal-signup"
             >Sign up</a
           >
@@ -57,6 +57,7 @@ import CreateGuideModal from "./Modal/CreateGuideModal"
 
 export default {
   name: "Navbar",
+  props: ["user"],
   components: {
     SignupModal,
     LoginModal,

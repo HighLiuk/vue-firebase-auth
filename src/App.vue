@@ -1,5 +1,5 @@
 <template>
-  <Navbar />
+  <Navbar :user="user" />
   <Guides :guides="guides" />
 </template>
 
@@ -17,6 +17,7 @@ export default {
   },
   data() {
     return {
+      user: null,
       guides: [],
     }
   },
@@ -24,6 +25,8 @@ export default {
     M.AutoInit()
 
     getUser(async (user) => {
+      this.user = user
+
       if (user) {
         this.guides = await getGuides()
       } else {
