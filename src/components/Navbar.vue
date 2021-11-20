@@ -16,7 +16,9 @@
         </li>
 
         <li class="logged-in">
-          <a href="#" class="grey-text" id="logout">Logout</a>
+          <a href="#" class="grey-text" id="logout" @click.prevent="logout"
+            >Logout</a
+          >
         </li>
 
         <li class="logged-in">
@@ -42,8 +44,13 @@
 </template>
 
 <script>
+import { logout } from "@/firebase"
+
 export default {
   name: "Navbar",
+  methods: {
+    logout,
+  },
 }
 </script>
 
