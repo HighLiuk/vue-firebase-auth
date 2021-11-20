@@ -10,6 +10,7 @@ import {
   getFirestore,
   collection,
   onSnapshot,
+  getDoc,
   addDoc,
   setDoc,
   doc,
@@ -42,7 +43,7 @@ async function logout() {
   await signOut(auth)
 }
 
-function getUser(cb) {
+function getCurrentUser(cb) {
   onAuthStateChanged(auth, cb)
 }
 
@@ -60,4 +61,4 @@ async function createGuide(title, content) {
   await addDoc(guides, { title, content })
 }
 
-export { signup, login, logout, getUser, getGuides, createGuide }
+export { signup, login, logout, getCurrentUser, getGuides, createGuide }

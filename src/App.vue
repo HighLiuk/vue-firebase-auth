@@ -7,7 +7,7 @@
 import M from "materialize-css"
 import Navbar from "./components/Navbar"
 import Guides from "./components/Guides"
-import { getUser, getGuides } from "@/firebase"
+import { getCurrentUser, getGuides } from "@/firebase"
 
 export default {
   name: "App",
@@ -24,7 +24,7 @@ export default {
   mounted() {
     M.AutoInit()
 
-    getUser((user) => {
+    getCurrentUser((user) => {
       this.user = user
 
       if (user) {
