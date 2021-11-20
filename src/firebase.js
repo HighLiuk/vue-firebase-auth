@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app"
-import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth"
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth"
 import { getFirestore } from "firebase/firestore/lite"
 
 const config = {
@@ -17,9 +22,13 @@ async function createUser(email, password) {
   return await createUserWithEmailAndPassword(auth, email, password)
 }
 
+async function login(email, password) {
+  return await signInWithEmailAndPassword(auth, email, password)
+}
+
 async function logout() {
   await signOut(auth)
   console.log("User signed out")
 }
 
-export { createUser, logout }
+export { createUser, login, logout }
