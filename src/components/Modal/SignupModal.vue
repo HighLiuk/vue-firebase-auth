@@ -28,7 +28,7 @@
 
 <script>
 import { Modal } from "materialize-css"
-import { createUser } from "@/firebase"
+import { signup } from "@/firebase"
 
 export default {
   name: "SignupModal",
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async onSubmit() {
-      const cred = await createUser(this.email, this.password)
+      const cred = await signup(this.email, this.password)
       console.log(cred)
       Modal.getInstance(this.$refs.modal).close()
       this.email = ""

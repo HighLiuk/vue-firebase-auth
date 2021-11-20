@@ -18,7 +18,7 @@ const app = initializeApp(config)
 const auth = getAuth(app)
 const db = getFirestore(app)
 
-async function createUser(email, password) {
+async function signup(email, password) {
   return await createUserWithEmailAndPassword(auth, email, password)
 }
 
@@ -31,4 +31,4 @@ async function logout() {
   console.log("User signed out")
 }
 
-export { createUser, login, logout }
+export { signup, login, logout }
