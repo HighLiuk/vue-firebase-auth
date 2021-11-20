@@ -6,7 +6,12 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth"
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite"
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+} from "firebase/firestore/lite"
 
 const config = {
   apiKey: "AIzaSyBTFq9b6I7JRA4G41XrwrwfzAa80xuyq2E",
@@ -46,4 +51,8 @@ async function getGuides() {
   return await getData(guides)
 }
 
-export { signup, login, logout, getUser, getGuides }
+async function createGuide(title, content) {
+  await addDoc(guides, { title, content })
+}
+
+export { signup, login, logout, getUser, getGuides, createGuide }
