@@ -9,21 +9,13 @@
 </template>
 
 <script>
-import { getGuides } from "@/firebase"
 import Guide from "./Guide"
 
 export default {
   name: "Guides",
+  props: ["guides"],
   components: {
     Guide,
-  },
-  data() {
-    return {
-      guides: [],
-    }
-  },
-  async mounted() {
-    this.guides = await getGuides()
   },
 }
 </script>

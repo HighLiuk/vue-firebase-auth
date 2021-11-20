@@ -1,13 +1,13 @@
 <template>
   <Navbar />
-  <Guides />
+  <Guides :guides="guides" />
 </template>
 
 <script>
 import M from "materialize-css"
 import Navbar from "./components/Navbar"
 import Guides from "./components/Guides"
-import { getUser } from "@/firebase"
+import { getUser, getGuides } from "@/firebase"
 
 export default {
   name: "App",
@@ -15,14 +15,19 @@ export default {
     Navbar,
     Guides,
   },
+  data() {
+    return {
+      guides: [],
+    }
+  },
   mounted() {
     M.AutoInit()
 
-    getUser((user) => {
+    getUser(async (user) => {
       if (user) {
-        console.log("User logged in", user)
+        this.guides = await getGuides()
       } else {
-        console.log("User logged out")
+        this.guides = []
       }
     })
   },
