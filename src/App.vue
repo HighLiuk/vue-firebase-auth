@@ -24,11 +24,13 @@ export default {
   mounted() {
     M.AutoInit()
 
-    getUser(async (user) => {
+    getUser((user) => {
       this.user = user
 
       if (user) {
-        this.guides = await getGuides()
+        getGuides((guides) => {
+          this.guides = guides
+        })
       } else {
         this.guides = []
       }

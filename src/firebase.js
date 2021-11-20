@@ -9,9 +9,9 @@ import {
 import {
   getFirestore,
   collection,
-  getDocs,
+  onSnapshot,
   addDoc,
-} from "firebase/firestore/lite"
+} from "firebase/firestore"
 
 const config = {
   apiKey: "AIzaSyBTFq9b6I7JRA4G41XrwrwfzAa80xuyq2E",
@@ -42,13 +42,14 @@ function getUser(cb) {
   onAuthStateChanged(auth, cb)
 }
 
-async function getData(collect) {
-  const { docs } = await getDocs(collect)
-  return docs.map((doc) => doc.data())
+function getData(collect, cb) {
+  onSnapshot(collect, ({ docs }) => {
+    cb(docs.map((doc) => doc.data()))
+  })
 }
 
-async function getGuides() {
-  return await getData(guides)
+function getGuides(cb) {
+  getData(guides, cb)
 }
 
 async function createGuide(title, content) {
