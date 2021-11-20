@@ -43,7 +43,7 @@ async function getData(collect) {
 }
 
 async function getGuides() {
-  return getData(guides)
+  return await getData(guides)
 }
 
 export { signup, login, logout, getUser, getGuides }

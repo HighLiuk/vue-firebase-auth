@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     async onSubmit() {
-      const cred = await login(this.email, this.password)
+      await login(this.email, this.password)
       Modal.getInstance(this.$refs.modal).close()
       this.email = ""
       this.password = ""
