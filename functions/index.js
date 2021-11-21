@@ -1,9 +1,20 @@
 const functions = require("firebase-functions")
+const admin = require("firebase-admin")
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
+admin.initializeApp()
 
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", { structuredData: true })
-//   response.send("Hello from Firebase!")
-// })
+const { getUserByEmail, setCustomUserClaims } = admin.auth()
+
+async function addAdminRole({ email }) {
+  // get user and add custom claim (admin)
+  const { uid } = await getUserByEmail(email)
+  await setCustomUserClaims(uid, { admin: true })
+
+  return {
+    message: `Success! ${email} has been made an admin`,
+  }
+}
+
+module.exports = {
+  addAdminRole: functions.https.onCall(addAdminRole),
+}
